@@ -17,14 +17,14 @@
   width: 350px;
   height: 200px;
   border: 2px solid pink;
-  border-radius: 5%;
+  border-radius: 5px;
 }
 
 .hangman {
   height: 530px;
   width: 250px;
   border: 2px solid blue;
-  border-radius: 5%;
+  border-radius: 5px;
   grid-row: 1;
   grid-row-end: 3;
 }
@@ -34,7 +34,7 @@
   height: 100%;
   margin: 0 auto;
   border: 2px solid black;
-  border-radius: 5%;
+  border-radius: 5px;
   grid-column-start: 2;
   grid-column-end: 3;
 }
