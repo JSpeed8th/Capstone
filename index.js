@@ -1,29 +1,38 @@
 var wordArray = ['Ghoul', 'Gobblin', 'Scarecrow', 'Ghost', 'Potion'];
-var wordInDashes = '';
+var wordInDashes = [];
 var word;
 var tempWord;
 var wrongGuesses = [];
 
+
+//--------------------RETURNS A RANDOM WORD WITHIN ARRAY------------------------
 
 function randomWordChooser() {
   let index = Math.floor(Math.random() * wordArray.length);
   return wordArray[index];
 };
 
+// function replaceLettersWithDash() {
+//   word = randomWordChooser()
+//   tempWord = word.split('');
+//   for(let a = 0; a < word.length; a++) {
+//     wordInDashes += '_';
+//   }
+//   console.log(word);
+//   wordInDashes = wordInDashes.split('');
+// }
+
 function replaceLettersWithDash() {
   word = randomWordChooser()
   tempWord = word.split('');
-  for(let a = 0; a < word.length; a++) {
-    wordInDashes += '_';
-  }
-  console.log(word);
-  wordInDashes = wordInDashes.split('');
+  console.log(word)
+  word.split('').forEach(function(){wordInDashes.push('_')})
 }
 
 function guessIt() {
-  wordInDashes = '';
+  wordInDashes = [];
   replaceLettersWithDash()
-  console.log(wordInDashes);
+  console.log(wordInDashes.join(' '));
   while(word != '') {
     var letter = prompt('Guess a word!');
     if(word.includes(letter) == true) {
@@ -36,11 +45,11 @@ function guessIt() {
       alert('Please, try again')
     }
   }
-  alert('Congradulations! You guessed ' + tempWord.join(''))
   console.log(`Incorrect guesses: ${wrongGuesses}`)
   return 'You Win!'
 }
 
+// ---------------------PRINTS THE STATUS OF THE GAME---------------------------
 
 function status(letter) {
   for(let a = 0; a < tempWord.length; a++) {
@@ -48,8 +57,10 @@ function status(letter) {
       wordInDashes[a] = letter;
     }
   }
-  console.log(wordInDashes)
+  console.log(wordInDashes.join(' '))
 }
+
+// ------------------PUSHES INCORRECT GUESSES INTO AN ARRAY---------------------
 
 function youLost(letter) {
   if (!wrongGuesses.includes(letter)) {

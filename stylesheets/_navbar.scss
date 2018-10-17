@@ -20,3 +20,14 @@ nav {
   width: 1px;
   background-color: black;
 }
+
+.loseCounter, .winCounter{
+  text-align: center;
+  display: inline-block;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  background-color: gray;
+  padding-bottom: 5px;
+  margin-bottom: -7px;
+}
