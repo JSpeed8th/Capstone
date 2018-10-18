@@ -1,6 +1,9 @@
 var wordContainer = document.querySelector(".word_container");
 var statusOfGame = document.querySelector(".status_of_game");
 var displayWrongGuess = document.querySelector(".wrong_guesses");
+var lossCounter = document.querySelector(".loseCounter");
+var winCounter = document.querySelector(".winCounter");
+var guessesLeft = document.querySelector(".num_of_guesses")
 
 // var wordArray = ['Ghoul', 'Gobblin', 'Scarecrow', 'Ghost', 'Potion'];
 var wordArray = [
@@ -45,42 +48,46 @@ function status(letter) {
 
 // ------------------PUSHES INCORRECT GUESSES INTO AN ARRAY---------------------
 
-function youLost(letter) {
+function youreWrong(letter) {
   if (!wrongGuesses.includes(letter) && !tempWord.includes(letter)) {
     wrongGuesses.push(letter)
     displayWrongGuess.innerText = wrongGuesses;
+    guessesLeft.style.display = 'block';
   }
 }
 
 
+function game() {
+  wordInDashes = [];
+  replaceLettersWithDash()
+  statusOfGame.innerText = wordInDashes.join(' ');
+  window.addEventListener('keypress', (letter) => {
+    letter = letter.key;
+    if(word != '') {
+      if(word.length == 1 && word.includes(letter) == true) {
+        word = word.split(letter).join('');
+        status(letter);
+        alert(`YOU WON! Incorrect guesses: ${wrongGuesses}`);
+      }
+      else if(word.includes(letter) == true) {
+        word = word.split(letter).join('');
+        status(letter);
+        console.log(word);
 
-wordInDashes = [];
-replaceLettersWithDash()
-statusOfGame.innerText = wordInDashes.join(' ');
-window.addEventListener('keypress', (letter) => {
-  letter = letter.key;
-  if(word != '') {
-    if(word.length == 1 && word.includes(letter) == true) {
-      word = word.split(letter).join('');
-      status(letter);
-      alert(`YOU WON! Incorrect guesses: ${wrongGuesses}`);
+      }else{
+        youreWrong(letter);
+      }
+    }else {
+      console.log(`Incorrect guesses: ${wrongGuesses}`)
+      console.log('You Win!')
     }
-    else if(word.includes(letter) == true) {
-      word = word.split(letter).join('');
-      status(letter);
-      console.log(word);
+  })
+}
 
-    }else{
-      youLost(letter);
-    }
-  }else {
-    console.log(`Incorrect guesses: ${wrongGuesses}`)
-    console.log('You Win!')
-  }
-})
-
+game();
 
 // Functionality Checklist
 // * If player has 6 wrong guesses than add 1 to loss counter
 // * Add hint button.
 // * next each word into an object which includes two hints.
+// * Add a prompt or modal which asks the played if they would like to play again. If so, call game() one more gain.

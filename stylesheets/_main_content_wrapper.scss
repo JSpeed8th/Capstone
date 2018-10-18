@@ -13,6 +13,7 @@
 
 .display_guess {
   // margin: 0 auto;
+  position: relative;
   float: right;
   width: 350px;
   height: 200px;
@@ -20,6 +21,20 @@
   border-radius: 5px;
   overflow: scroll;
   text-align: center;
+}
+
+.num_of_guesses {
+  display: none;
+  position: absolute;
+  top: 150px;
+  left: 70px;
+  width: 200px;
+  border: 2px solid red;
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  font-size: 1.5em;
+  border-radius: 10px;
 }
 
 .hangman {
