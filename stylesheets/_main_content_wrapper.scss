@@ -11,16 +11,14 @@
   height: 100%;
 }
 
-.num_of_guesses {
+.display_guess {
   // margin: 0 auto;
   float: right;
   width: 350px;
   height: 200px;
   border: 2px solid pink;
   border-radius: 5px;
-}
-
-.num_of_guesses h3 {
+  overflow: scroll;
   text-align: center;
 }
 
@@ -33,7 +31,7 @@
   grid-row-end: 3;
 }
 
-.word {
+.word_container {
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -41,4 +39,10 @@
   border-radius: 5px;
   grid-column-start: 2;
   grid-column-end: 3;
+  text-align: center;
+}
+
+.status_of_game {
+  letter-spacing: .3em;
+  font-size: 4em;
 }

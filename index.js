@@ -1,3 +1,7 @@
+var wordContainer = document.querySelector(".word_container");
+var statusOfGame = document.querySelector(".status_of_game");
+var displayWrongGuess = document.querySelector(".wrong_guesses");
+
 var wordArray = ['Ghoul', 'Gobblin', 'Scarecrow', 'Ghost', 'Potion'];
 var wordInDashes = [];
 var word;
@@ -32,7 +36,7 @@ function replaceLettersWithDash() {
 function guessIt() {
   wordInDashes = [];
   replaceLettersWithDash()
-  console.log(wordInDashes.join(' '));
+  statusOfGame.innerText = wordInDashes.join(' ');
   while(word != '') {
     var letter = prompt('Guess a word!');
     if(word.includes(letter) == true) {
@@ -57,13 +61,17 @@ function status(letter) {
       wordInDashes[a] = letter;
     }
   }
-  console.log(wordInDashes.join(' '))
+  statusOfGame.innerText = wordInDashes.join(' ');
 }
 
 // ------------------PUSHES INCORRECT GUESSES INTO AN ARRAY---------------------
 
 function youLost(letter) {
-  if (!wrongGuesses.includes(letter)) {
+  if (!wrongGuesses.includes(letter) && !tempWord.includes(letter)) {
+
     wrongGuesses.push(letter)
+    displayWrongGuess.innerText = wrongGuesses;
   }
 }
+
+window.addEventListener('keydown', function(e){console.log(`You just inputted ${e.key}`)});
