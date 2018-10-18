@@ -3,13 +3,15 @@ var statusOfGame = document.querySelector(".status_of_game");
 var displayWrongGuess = document.querySelector(".wrong_guesses");
 var lossCounter = document.querySelector(".loseCounter");
 var winCounter = document.querySelector(".winCounter");
-var guessesLeft = document.querySelector(".num_of_guesses")
+var guessesLeft = document.querySelector(".num_of_guesses");
+var hintButton = document.querySelector(".hint_button");
+var hintContainer = document.querySelector(".hint_container")
 
 // var wordArray = ['Ghoul', 'Gobblin', 'Scarecrow', 'Ghost', 'Potion'];
 var wordArray = [
   {word: 'coffin', hint: 'The person who built it sold it. The person who bought it never used it. The person who used it never saw it. What is it?'},
   {word: 'blood', hint: 'Dracula loves to draw this, as well as, put it in the bank. What is it?'},
-  {word: 'skeleton', hint: 'I have a body, legs and arms but I have no guts. What am I? '},
+  {word: 'skeleton', hint: 'I have a body, legs and arms but I have no guts. What am I?'},
   {word: 'vampire', hint: "No matter what type you are, when I’m thirsty I will come and find you no matter where you are. Who am I?"},
   {word: 'cemetery', hint: 'You’ll find me in the quietest, creepiest place in town, yet people are dying to get in. What am I?'},
   {word: 'ghoul', hint: 'A shapeshifting demon that lives in the desert.'}
@@ -19,12 +21,13 @@ var wordInDashes = [];
 var word;
 var tempWord;
 var wrongGuesses = [];
+var index;
 
 
 //--------------------RETURNS A RANDOM WORD WITHIN ARRAY------------------------
 
 function randomWordChooser() {
-  let index = Math.floor(Math.random() * wordArray.length);
+  index = Math.floor(Math.random() * wordArray.length);
   return wordArray[index]['word'];
 };
 
@@ -53,6 +56,7 @@ function youreWrong(letter) {
     wrongGuesses.push(letter)
     displayWrongGuess.innerText = wrongGuesses;
     guessesLeft.style.display = 'block';
+    guessesLeft.innerText = wrongGuesses.length;
   }
 }
 
@@ -82,6 +86,18 @@ function game() {
       console.log('You Win!')
     }
   })
+}
+
+hintButton.addEventListener('click', function () {
+  showHint()
+})
+
+function showHint() {
+  hintButton.style.display = 'none';
+  var displayHint = document.createElement('p');
+  displayHint.style.fontSize = '1.5em';
+  displayHint.innerText = wordArray[index]['hint'];
+  hintContainer.appendChild(displayHint);
 }
 
 game();
