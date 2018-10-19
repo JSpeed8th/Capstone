@@ -94,7 +94,7 @@ function youreWrong(letter) {
     if(wordInDashes.join('') == word) {
       restartOrNaw();
       wrongGuesses = [];
-      winCounter++;
+      winningCounter++;
       lossCounter.innerText = loseCounter;
     }
   };
@@ -168,9 +168,7 @@ game();
 // -------------------SETTING WIN/LOSE COUNTERS TO ZERO-------------------------
 
 var loseCounter = 0;
-var winCounter = 0;
 var winningCounter = 0;
-var winCounter = 0;
 lossCounter.innerText = loseCounter;
 winCounter.innerText = winningCounter;
 
