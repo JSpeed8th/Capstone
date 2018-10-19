@@ -1,9 +1,15 @@
-nav {
+.score_keeping {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 16px;
-  border: 2px solid green;
-  font-size: 1.5em;
+  // border: 2px solid green;
+  font-size: 1.2em;
+}
+
+.projectname {
+  text-align: center;
+  font-size: 2em;
+  border-bottom: 2px solid gray;
 }
 
 .wins, .losses {
@@ -25,10 +31,11 @@ nav {
   text-align: center;
   display: inline-block;
   min-width: 28px;
-  height: 28px;
+  height: 24px;
   border-radius: 5px;
   background-color: gray;
   padding: 0 3px;
   padding-bottom: 5px;
   margin-bottom: -7px;
+  color: white;
 }

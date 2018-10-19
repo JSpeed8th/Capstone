@@ -32,6 +32,7 @@ var wordInDashes;
 var word;
 var index;
 var wrongGuesses = [];
+var wrongCounter;
 
 
 //--------------------RETURNS A RANDOM WORD WITHIN ARRAY------------------------
@@ -72,11 +73,14 @@ function youreWrong(letter) {
   if (!wrongGuesses.includes(letter) && !word.includes(letter)) {
     wrongGuesses.push(letter)
     displayWrongGuess.innerText = wrongGuesses;
+
+    wrongCounter--;
+    guessesLeft.innerText = wrongCounter;
+    guessesLeft.style.display = 'block';
   }
 }
 
   function gameOver() {
-    console.log('gameover')
     if(wrongGuesses.length == 6) {
       restartOrNaw();
       wrongGuesses = [];
@@ -98,10 +102,13 @@ function youreWrong(letter) {
 
 function game() {
   // Assigns global variable to an array;
-
+  wrongCounter = 6;
   wordInDashes = [];
+
+  guessesLeft.style.display = 'none';
   displayHint.style.display = 'none';
   hintButton.style.display = 'block';
+  displayWrongGuess.innerText = '';
   // Calls the function which pushes underscores to an array for every letter within word.
   replaceLettersWithDash();
   // Joining and displaying dash array in order to make it look pretty for the user.
