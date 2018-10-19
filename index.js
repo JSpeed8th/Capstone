@@ -12,6 +12,7 @@ var modal = document.querySelector(".modal");
 var yesButton = document.querySelector(".yesbutton");
 var noButton = document.querySelector(".nobutton");
 var modalPara = document.querySelector(".modal_para");
+var projectName = document.querySelector(".projectname");
 
 // ---------------------ARRAY CONTAINING WORDS AND HINTS------------------------
 
@@ -23,7 +24,11 @@ var wordArray = [
   {word: 'cemetery', hint: 'You’ll find me in the quietest, creepiest place in town, yet people are dying to get in. What am I?'},
   {word: 'ghoul', hint: 'A shapeshifting demon that lives in the desert.'},
   {word: 'troll', hint: 'I live under bridges and in caves. I eat travelers who pass my way. Who am I'},
-  {word: 'darkness', hint: 'I can’t be seen, found, heard or smelled. I lie behind stars and under hills, I fill empty holes, come first and follow after. What am I?'}
+  {word: 'darkness', hint: 'I can’t be seen, found, heard or smelled. I lie behind stars and under hills, I fill empty holes, come first and follow after. What am I?'},
+  {word: 'silence', hint: 'I disappear every time you say my name. What am I?'},
+  {word: 'breadth', hint: 'I am lighter than a feather but the world’s strongest man can’t hold onto me long What am I?'},
+  {word: 'cloud', hint: 'I move without seeing and I cry without eyes. What am I?'},
+  {word: 'tombstone', hint: "There are hundreds of these in a graveyard, but dead bodies it is not. It’s what contains all the info as to who’s in each burial plot"}
 ];
 
 // -----------------------------GLOBAL VARIABLES--------------------------------
@@ -83,7 +88,6 @@ function youreWrong(letter) {
   function gameOver() {
     if(wrongGuesses.length == 6) {
       restartOrNaw();
-      wrongGuesses = [];
       loseCounter++;
       lossCounter.innerText = loseCounter;
       // reset()
@@ -93,22 +97,30 @@ function youreWrong(letter) {
   function youWon() {
     if(wordInDashes.join('') == word) {
       restartOrNaw();
-      wrongGuesses = [];
       winningCounter++;
       lossCounter.innerText = loseCounter;
     }
   };
+
+  // -------------------SETTING WIN/LOSE COUNTERS TO ZERO-------------------------
+
+  var loseCounter = 0;
+  var winningCounter = 0;
 // ------------------------------GAME FUNCTION----------------------------------
 
 function game() {
   // Assigns global variable to an array;
   wrongCounter = 6;
   wordInDashes = [];
+  wrongGuesses = [];
 
   guessesLeft.style.display = 'none';
   displayHint.style.display = 'none';
   hintButton.style.display = 'block';
   displayWrongGuess.innerText = '';
+
+  lossCounter.innerText = loseCounter;
+  winCounter.innerText = winningCounter;
   // Calls the function which pushes underscores to an array for every letter within word.
   replaceLettersWithDash();
   // Joining and displaying dash array in order to make it look pretty for the user.
@@ -164,13 +176,17 @@ function showHint() {
   displayHint.style.display = 'block';
 }
 
-game();
-// -------------------SETTING WIN/LOSE COUNTERS TO ZERO-------------------------
+// Slick Hover Animations
+projectName.addEventListener('mouseover', function() {
+  projectName.innerText = "Happy Hallows Eve!";
+})
 
-var loseCounter = 0;
-var winningCounter = 0;
-lossCounter.innerText = loseCounter;
-winCounter.innerText = winningCounter;
+projectName.addEventListener('mouseout', function() {
+  projectName.innerText = "CAPSTONE";
+})
+
+game();
+
 
 // Functionality Checklist
 // * If player has 6 wrong guesses than add 1 to loss counter
