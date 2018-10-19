@@ -150,3 +150,7 @@ winCounter.innerText = winningCounter;
 // * Add a prompt or modal which asks the played if they would like to play again. If so, call game() one more gain.
 
 // if there are six wrong guesses than game over. If there are six wrong guesses within array, game over
+
+
+
+// -----------------------------------MODAL-------------------------------------
