@@ -8,6 +8,10 @@ var hintButton = document.querySelector(".hint_button");
 var hintContainer = document.querySelector(".hint_container");
 var displayHint = document.querySelector(".displayHint");
 var wrongLetters = document.querySelector(".wrong_letters");
+var modal = document.querySelector(".modal");
+var yesButton = document.querySelector(".yesbutton");
+var noButton = document.querySelector(".nobutton");
+var modalPara = document.querySelector(".modal_para");
 
 // ---------------------ARRAY CONTAINING WORDS AND HINTS------------------------
 
@@ -74,8 +78,8 @@ function youreWrong(letter) {
   function gameOver() {
     console.log('gameover')
     if(wrongGuesses.length == 6) {
-      alert('GAME OVER')
-      wrongGuesses = []
+      restartOrNaw();
+      wrongGuesses = [];
       loseCounter++;
       lossCounter.innerText = loseCounter;
       // reset()
@@ -84,7 +88,8 @@ function youreWrong(letter) {
 
   function youWon() {
     if(wordInDashes.join('') == word) {
-      alert('YOU WON')
+      restartOrNaw();
+      wrongGuesses = [];
       winCounter++;
       lossCounter.innerText = loseCounter;
     }
@@ -93,7 +98,10 @@ function youreWrong(letter) {
 
 function game() {
   // Assigns global variable to an array;
+
   wordInDashes = [];
+  displayHint.style.display = 'none';
+  hintButton.style.display = 'block';
   // Calls the function which pushes underscores to an array for every letter within word.
   replaceLettersWithDash();
   // Joining and displaying dash array in order to make it look pretty for the user.
@@ -121,6 +129,20 @@ function game() {
 //   // alert('You Win!')
 //   game();
 // }
+
+function restartOrNaw() {
+  modal.style.display = "block";
+  // Restarts Games
+  yesButton.addEventListener('click', function() {
+    game();
+    modal.style.display = "none";
+  })
+  noButton.addEventListener('click', function(){
+    modalPara.innerText = "Thanks for playing!"
+    yesButton.style.display = 'none';
+    noButton.style.display = 'none';
+  })
+}
 // ------------------------HINT BUTTON FUNTIONALITY-----------------------------
 
 hintButton.addEventListener('click', function () {
