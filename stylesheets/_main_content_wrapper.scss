@@ -1,30 +1,29 @@
 .main_content_wrapper {
   display: grid;
-  grid-template-columns: .5fr 1fr;
-  grid-template-rows: .3fr .3fr .4fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   margin-top: 20px;
   padding: 0 40px;
-  // background-image: url("../images/background1.jpg");
-  // background-position: center;
-  // background-size: 100% 100%;
-  // background-repeat: no-repeat;
 }
 
 .guess_wrapper {
   width: 100%;
   height: 100%;
+  grid-column: 2/3;
 }
 
 .display_guess {
-  // margin: 0 auto;
+  margin: 0 auto;
   position: relative;
   float: right;
-  width: 350px;
+  width: 100%;
   height: 130px;
-  border: 2px solid pink;
   border-radius: 5px;
   overflow: scroll;
   text-align: center;
+  grid-row: 1/4;
+  background-color: #141644;
+  opacity: .9;
 }
 
 .num_of_guesses {
@@ -32,12 +31,12 @@
   // opacity: 0;
   position: absolute;
   top: 78px;
-  left: 70px;
+  left: 97px;
   width: 200px;
   // height: 200px;
-  border: 2px solid #92140C;
+  border: 2px solid #853953;
   text-align: center;
-  color: #92140C;
+  color: #853953;
   font-weight: bold;
   font-size: 1.5em;
   border-radius: 10px;
@@ -51,6 +50,7 @@
 
 .displayHint {
   display: none;
+  color: white;
 }
 
 .display_guess h3{
@@ -70,18 +70,20 @@
 // }
 
 .hangman {
-  height: 530px;
+  // height: 530px;
   width: 250px;
   border: 2px solid blue;
   border-radius: 5px;
-  grid-row: 1;
-  grid-row-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 4;
 }
 
 .hint_container {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 10px;
+  grid-row: 2/3;
+  grid-column: 1/4;
 }
 
 .hint_button{
@@ -89,9 +91,11 @@
   border-radius: 10px;
   padding: 5px;
   outline: none;
+  border: none;
   margin: 0 auto;
   box-shadow: 0 4px 5px black;
   background-color: #EFAA65;
+  font-family: 'K2D', sans-serif;
 }
 
 .hint_button:hover {
@@ -100,14 +104,16 @@
 }
 
 .word_container {
-  width: 100%;
+  width: 70%;
+  height: 80%;
   margin: 0 auto;
-  border-radius: 5px;
-  grid-column-start: 2;
-  grid-column-end: 3;
+  border-radius: 20px;
+  grid-column: 1/4;
+  grid-row: 3/5;
   text-align: center;
-  background-color: #EF754B;
+  background-color: #C79A4B;
   color: #353238;
+  opacity: .75;
 }
 
 .status_of_game {

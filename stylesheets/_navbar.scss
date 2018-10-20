@@ -9,7 +9,10 @@
 .projectname_wrapper {
   text-align: center;
   font-size: 2em;
-  border-bottom: 2px solid gray;
+  background-color: black;
+  color: $main-font-color;
+  padding: .3em 0;
+  opacity: .7;
 }
 
 .wins, .losses {
@@ -24,7 +27,7 @@
   display: inline-block;
   height: 28px;
   width: 1px;
-  background-color: black;
+  background-color: $main-font-color;
 }
 
 .loseCounter, .winCounter{
@@ -33,7 +36,7 @@
   min-width: 28px;
   height: 24px;
   border-radius: 5px;
-  background-color: gray;
+  background-color: black;
   padding: 0 3px;
   padding-bottom: 5px;
   margin-bottom: -7px;
