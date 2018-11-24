@@ -76,12 +76,16 @@ function youreWrong(letter) {
   console.log('youre wrong')
   // If wrong letter is not within array, push it within array and display the array.
   if (!wrongGuesses.includes(letter) && !word.includes(letter)) {
-    wrongGuesses.push(letter)
-    displayWrongGuess.innerText = wrongGuesses;
+    if(wrongGuesses.length <= 5){
+      wrongGuesses.push(letter)
+      displayWrongGuess.innerText = wrongGuesses;
 
-    wrongCounter--;
-    guessesLeft.innerText = wrongCounter;
-    guessesLeft.style.display = 'block';
+      wrongCounter--;
+      guessesLeft.innerText = wrongCounter;
+      guessesLeft.style.display = 'block';
+    } else {
+      gameOver()
+    }
   }
 }
 
@@ -90,7 +94,6 @@ function youreWrong(letter) {
       restartOrNaw();
       loseCounter++;
       lossCounter.innerText = loseCounter;
-      // reset()
     }
   };
 
@@ -98,7 +101,7 @@ function youreWrong(letter) {
     if(wordInDashes.join('') == word) {
       restartOrNaw();
       winningCounter++;
-      lossCounter.innerText = loseCounter;
+      winCounter.innerText = winningCounter;
     }
   };
 
@@ -134,20 +137,11 @@ function game() {
         youWon()
       }else{
         youreWrong(letter)
-        gameOver()
+        // gameOver()
       }
     }
   })
 };
-
-// function reset() {
-//   guessesLeft.style.display = 'none';
-//   displayHint.style.display = 'none';
-//   hintButton.style.display = 'block';
-//   wrongLetters.innerText = '';
-//   // alert('You Win!')
-//   game();
-// }
 
 function restartOrNaw() {
   modal.style.display = "block";
@@ -155,7 +149,7 @@ function restartOrNaw() {
   yesButton.addEventListener('click', function() {
     game();
     modal.style.display = "none";
-  })
+})
   noButton.addEventListener('click', function(){
     modalPara.innerText = "Thanks for playing!"
     yesButton.style.display = 'none';
